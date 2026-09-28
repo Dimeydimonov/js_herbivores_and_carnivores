@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-constructor */
 'use strict';
 
 class Animal {
@@ -11,11 +12,7 @@ class Animal {
 
   checkHealth() {
     if (this.health <= 0) {
-      const index = Animal.alive.indexOf(this);
-
-      if (index !== -1) {
-        Animal.alive.splice(index, 1);
-      }
+      Animal.alive = Animal.alive.filter((a) => a.health > 0);
     }
   }
 }
@@ -32,7 +29,6 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  // eslint-disable-next-line no-useless-constructor
   constructor(name) {
     super(name);
   }
